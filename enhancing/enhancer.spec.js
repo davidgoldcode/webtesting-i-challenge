@@ -86,5 +86,21 @@ describe("enhancer.js", () => {
         enhancement: 15,
       });
     });
+
+    it("if enhancement is > 16, decrease enhancement by 1 (will also decrease dura by 10)", () => {
+      const item = {
+        name: "Portia",
+        durability: 14,
+        enhancement: 18,
+      };
+
+      const result = enhancer.fail(item);
+
+      expect(result).toEqual({
+        name: "Portia",
+        durability: 4,
+        enhancement: 17,
+      });
+    });
   });
 });
