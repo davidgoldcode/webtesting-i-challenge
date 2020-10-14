@@ -103,4 +103,38 @@ describe("enhancer.js", () => {
       });
     });
   });
+
+  describe("get()", () => {
+    it("enhance is 0, name isnt modified", () => {
+      const item = {
+        name: "Cory",
+        durability: 19,
+        enhancement: 0,
+      };
+
+      const result = enhancer.get(item);
+
+      expect(result).toEqual({
+        name: "Cory",
+        durability: 19,
+        enhancement: 0,
+      });
+    });
+
+    it("enhance is >0, name is modified", () => {
+      const item = {
+        name: "Cory",
+        durability: 19,
+        enhancement: 5,
+      };
+
+      const result = enhancer.get(item);
+
+      expect(result).toEqual({
+        name: "[+5]Cory",
+        durability: 19,
+        enhancement: 5,
+      });
+    });
+  });
 });
